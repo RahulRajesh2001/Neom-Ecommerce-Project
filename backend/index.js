@@ -29,6 +29,7 @@ const adminBuildPath = path.join(__dirname, '../admin/dist');
 app.use(express.static(userBuildPath));
 app.use(express.static(adminBuildPath));
 
+
 // Route for serving admin panel
 app.get("/admin/*", function (req, res) {
   res.sendFile(
@@ -38,8 +39,11 @@ app.get("/admin/*", function (req, res) {
               res.status(500).send(err);
           }
       }
-  );
-});
+  )
+})
+
+
+console.log(path.join(__dirname, "../user/dist/index.html"))
 
 // Route for serving user panel
 app.get("/*", function (req, res) {
@@ -50,8 +54,8 @@ app.get("/*", function (req, res) {
               res.status(500).send(err);
           }
       }
-  );
-});
+  )
+})
 
 export const instance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
