@@ -95,8 +95,8 @@ const WishListPage = () => {
         <div className='h-[90%] w-[80%] overflow-auto border rounded-lg'>
           <div className='font-Playfair font-bold text-[25px] bg-slate-300 border pl-10'>Wishlist</div>
           {/*wishlist products */}
-          {products.map((item) => (
-            <div key={item._id} className='w-[100%] h-[80px] flex justify-evenly items-center border-b'>
+          {products?.map((item) => (
+            <div key={item?._id} className='w-[100%] h-[80px] flex justify-evenly items-center border-b'>
               {/*first section or image section */}
               <div className='flex justify-center items-center'>
                 <img src={item?.images[0]} alt="Product image" className='w-[50px] h-[50px]'/>
@@ -117,7 +117,7 @@ const WishListPage = () => {
               </button>
 
               <div className='flex justify-center items-center'>
-                <MdDelete className='text-[25px] cursor-pointer' onClick={() => removeFromWishlist(item._id)}/>
+                <MdDelete className='text-[25px] cursor-pointer' onClick={() => removeFromWishlist(item?._id)}/>
               </div>
             </div>
           ))}
