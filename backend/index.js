@@ -20,6 +20,15 @@ connectDB()
 const PORT = process.env.PORT
 const app = express()
 
+app.use(cors({
+  origin: 'https://theneom.shop', 
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] ,
+  allowedHeaders: ['Authorization', 'Content-Type'], 
+  credentials: true
+}))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // paths for frontend
@@ -62,9 +71,7 @@ export const instance = new Razorpay({
   key_secret: process.env.RAZORPAY_API_SECRET,
 })
 
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+
 
 import userRouters from './routes/userRoutes.js'
 import adminRouters from './routes/adminRoutes.js'
