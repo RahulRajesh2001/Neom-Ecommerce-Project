@@ -10,6 +10,8 @@ const CategoryBar = () => {
     axios.get(`${baseUrl}/api/v1/getCategories`).then((res)=>{
       console.log(res.data.categories)
       setCategories(res?.data?.categories)
+    }).catch((err)=>{
+      console.log("this is category error",err)
     })
   },[])
   return (
